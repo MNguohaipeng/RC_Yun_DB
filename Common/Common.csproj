@@ -34,8 +34,9 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SqlSugar">
-      <HintPath>..\RC\bin\SqlSugar.dll</HintPath>
+    <Reference Include="SqlSugar, Version=3.5.3.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlSugar.3.5.3.4\lib\net40\SqlSugar.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
