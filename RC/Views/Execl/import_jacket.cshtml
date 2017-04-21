@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "import_jacket";
+}
+
+
+ 
+@Styles.Render("~/Scripts/bootstrap/dist/css/bootstrap.min.css")
+@Styles.Render("~/Scripts/font-awesome/css/font-awesome.min.css")
+@Styles.Render("~/Scripts/bootstrap-table/bootstrap-table.min.css")
+
+
+<form id="size_form" action="~/Execl/import_jacket" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="import" value="false" />
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            上传文件
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                @*<div class="form-group">
+                    <label for="name">尺码表类型</label>
+                    <select  class="form-control" name="size_type">
+                    </select>
+                </div>
+                <br>*@
+                <div class="form-group">
+                    <label for="name">尺码表编码</label>
+                    <input type="text" class="form-control" name="Size_Code"  placeholder="请输入尺码表编码">
+                </div>
+                <div class="form-group">
+                    <label for="name">上传尺码表</label>
+                    <input type="text" class="form-control" name="file_name" readonly="readonly" placeholder="点击文本框选择上传的文件">
+                </div>
+
+             
+                <br>
+                <div class="input-group">
+                    <button type="button" class="btn btn-success" onclick="analysis()">解析</button>
+
+                </div>
+                <input type="file" name="up_file" style="display:none" />
+            </div>
+        </div>
+    </div>
+</form>
+ 
+ 
+ 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    预览
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>解析结果<small>请核对数据</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive" style="height: 400px; overflow: auto" id="scroll-1">
+                            <table class="table table-striped jambo_table bulk_action" id="exli01">
+                                <thead>
+                                    <tr class="headings"></tr>
+                                </thead>
+                                <tbody id="excel_data_list"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    取消
+                </button>
+                <button type="button" class="btn btn-primary" onclick="_import()">
+                    导入
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal -->
+
+ 
+ 
+
+
+@Scripts.Render("~/Scripts/jquery/dist/jquery.min.js")
+
+
+@Scripts.Render("~/Scripts/bootstrap.min.js")
+@Scripts.Render("~/Content/index.js")
+@Scripts.Render("~/Scripts/jquery-form.js")
+@Scripts.Render("~/Scripts/A_Execl/import_jacket.js")
+<script>
+    $(function () {
+
+
+        $("input[name='file_name']").click(function () {
+            $("input[name='up_file']").click();
+
+        })
+
+        $("input[name='up_file']").change(function () {
+            $("input[name='file_name']").val($(this).val());
+        })
+    })
+
+ 
+
+
+
+</script>

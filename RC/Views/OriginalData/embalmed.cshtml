@@ -1,0 +1,52 @@
+﻿
+@Styles.Render("~/Scripts/bootstrap/dist/css/bootstrap.min.css")
+@Styles.Render("~/Scripts/font-awesome/css/font-awesome.min.css")
+@Styles.Render("~/Scripts/bootstrap-table/bootstrap-table.min.css")
+
+
+
+ 
+<form id="size_form" action="~/Execl/import_jacket" method="post" enctype="multipart/form-data">
+
+	<input type="hidden" name="import" value="false" />
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			上传文件
+		</div>
+		<div class="panel-body">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="name">原单类型</label>
+					<select class="form-control" name="excel_type"   ></select>
+				</div>
+				<br>
+ 
+				<div class="form-group">
+					<label for="name">上传原单</label>
+					<input type="text" class="form-control" name="file_name" readonly="readonly" placeholder="点击文本框选择上传的文件">
+				</div>
+
+
+				<br>
+				<div class="input-group">
+					<button type="button" class="btn btn-success" onclick="analysis()">解析</button>
+
+				</div>
+				<input type="file" name="up_file" style="display:none" />
+			</div>
+		</div>
+	</div>
+</form>
+
+
+@Scripts.Render("~/Scripts/jquery/dist/jquery.min.js")
+@Scripts.Render("~/Scripts/bootstrap.min.js")
+@Scripts.Render("~/Scripts/jquery-form.js")
+@Scripts.Render("~/Content/index.js")
+@Scripts.Render("~/Scripts/A_OriginalData/embalmed.js")
+ 
+
+ 
+ 
+ 
