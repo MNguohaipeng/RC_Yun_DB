@@ -18,7 +18,7 @@ namespace Common
         {
             get
             {
-                string reval = @"server=DESKTOP-OV0I35V\SQLEXPRESS;uid=sa;pwd=123456;database=ReturnCode"; //这里可以动态根据cookies或session实现多库切换
+                string reval = @"server=172.16.7.81;uid=GHP;pwd=guohai0428;database=ReturnCode"; //这里可以动态根据cookies或session实现多库切换
                 return reval;
             }
         }

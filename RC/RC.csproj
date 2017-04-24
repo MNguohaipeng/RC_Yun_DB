@@ -203,6 +203,8 @@
     <Content Include="Scripts\A_Execl\import_trousers.js" />
     <Content Include="Scripts\A_OriginalData\embalmed.js" />
     <Content Include="Scripts\A_SizeManage\List.js" />
+    <Content Include="Scripts\bootstrap-table\bootstrap-table-zh-CN.js" />
+    <Content Include="Scripts\bootstrap-table\bootstrap-table-zh-CN.min.js" />
     <Content Include="Scripts\bootstrap-table\bootstrap-table.min.css" />
     <Content Include="Scripts\bootstrap-table\bootstrap-table.min.js" />
     <Content Include="Scripts\bootstrap.js" />
