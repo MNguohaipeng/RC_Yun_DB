@@ -12,7 +12,7 @@ namespace Common
 	{
 
 		//上传西服上衣尺码表
-		public static bool Import_Excel_jacket(DataTable table, out string errmsg)
+		public static bool Import_Excel_jacket(DataTable table,string size_code, string gender, out string errmsg)
 		{
 
 			using (var db = SugarDao.GetInstance())
@@ -48,64 +48,113 @@ namespace Common
 							{
 								row[a] = row[a].ToString().Replace("..", ".");
 							}
+
 						}
 
 						row.EndEdit();
 
 						#endregion
-
-						CoatSize cs = new CoatSize();
-						cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
-						cs.FrontLength = table.Rows[i]["FrontLength"] + "";
-						cs.NetBust = table.Rows[i]["NetBust"] + "";
-						cs.FinishedBust = Convert.ToDecimal(table.Rows[i]["FinishedBust"]);
-						cs.InWaist = Convert.ToDecimal(table.Rows[i]["InWaist"]);
-						cs.FinishedHem_NoFork = Convert.ToDecimal(table.Rows[i]["FinishedHem_NoFork"]);
-						cs.FinishedHem_SplitEnds = Convert.ToDecimal(table.Rows[i]["FinishedHem_SplitEnds"]);
-						cs.ShoulderWidth = Convert.ToDecimal(table.Rows[i]["ShoulderWidth"]);
-						cs.Size_Code = table.Rows[i]["Size_Code"] + "";
-						cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
-						var ruid = db.Insert(cs, true);
-
-						string req = table.Rows[i]["FK_Sleeve_ID"] + "";
-
-						if (req.IndexOf("      ") > 0)
+						if (!string.IsNullOrEmpty(gender))
 						{
-							req = req.Replace("      ", "^");
+
+							object ruid;
+							if (gender == "男")
+							{
+
+								XF_SY_NAN_CodeSize cs = new XF_SY_NAN_CodeSize();
+
+								cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
+
+								cs.FrontLength = table.Rows[i]["FrontLength"] + "";
+
+								cs.NetBust = table.Rows[i]["NetBust"] + "";
+
+								cs.FinishedBust = Convert.ToDecimal(table.Rows[i]["FinishedBust"]);
+
+								cs.InWaist = Convert.ToDecimal(table.Rows[i]["InWaist"]);
+
+								cs.FinishedHem_NoFork = Convert.ToDecimal(table.Rows[i]["FinishedHem_NoFork"]);
+
+								cs.FinishedHem_SplitEnds = Convert.ToDecimal(table.Rows[i]["FinishedHem_SplitEnds"]);
+
+								cs.ShoulderWidth = Convert.ToDecimal(table.Rows[i]["ShoulderWidth"]);
+
+								cs.Size_Code = size_code;
+
+								cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
+
+								ruid = db.Insert(cs, true);
+
+							}
+							else
+							{
+
+
+								XF_SY_NU_CodeSize cs = new XF_SY_NU_CodeSize();
+
+								cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
+
+								cs.FrontLength = table.Rows[i]["FrontLength"] + "";
+
+								cs.NetBust = table.Rows[i]["NetBust"] + "";
+
+								cs.FinishedBust = Convert.ToDecimal(table.Rows[i]["FinishedBust"]);
+
+								cs.InWaist = Convert.ToDecimal(table.Rows[i]["InWaist"]);
+
+								cs.FinishedHem_NoFork = Convert.ToDecimal(table.Rows[i]["FinishedHem_NoFork"]);
+
+								cs.SleeveWidth = Convert.ToDecimal(table.Rows[i]["SleeveWidth"]);
+
+								cs.ShoulderWidth = Convert.ToDecimal(table.Rows[i]["ShoulderWidth"]);
+
+								cs.Size_Code = table.Rows[i]["Size_Code"] + "";
+
+								cs.Height = Convert.ToDecimal(table.Rows[i]["Height"]);
+
+								ruid = db.Insert(cs, true);
+							}
+
+
+							string req = table.Rows[i]["FK_Sleeve_ID"] + "";
+
+							if (req.IndexOf("      ") > 0)
+							{
+								req = req.Replace("      ", "^");
+							}
+
+							if (req.IndexOf("     ") > 0)
+							{
+								req = req.Replace("     ", "^");
+							}
+
+							if (req.IndexOf("    ") > 0)
+							{
+								req = req.Replace("    ", "^");
+							}
+
+							if (req.IndexOf("   ") > 0)
+							{
+								req = req.Replace("   ", "^");
+							}
+
+							if (req.IndexOf("  ") > 0)
+							{
+								req = req.Replace("  ", "^");
+							}
+
+							req = req.Replace(" ", "^");
+
+							req = req.Replace(":", ";");
+
+							string[] sleeve_arrey = req.Split('^');
+
+							Sleeve see = new Sleeve();
+							see.FK_CoatSize_ID = Convert.ToInt32(ruid);
+							see.Code = sleeve_arrey[0].Split(';')[0];
+							see.Length = Convert.ToDecimal(sleeve_arrey[0].Split(';')[1]);
+							db.Insert(see);
 						}
-
-						if (req.IndexOf("     ") > 0)
-						{
-							req = req.Replace("     ", "^");
-						}
-
-						if (req.IndexOf("    ") > 0)
-						{
-							req = req.Replace("    ", "^");
-						}
-
-						if (req.IndexOf("   ") > 0)
-						{
-							req = req.Replace("   ", "^");
-						}
-
-						if (req.IndexOf("  ") > 0)
-						{
-							req = req.Replace("  ", "^");
-						}
-
-						req = req.Replace(" ", "^");
-
-						req = req.Replace(":", ";");
-
-						string[] sleeve_arrey = req.Split('^');
-
-						Sleeve see = new Sleeve();
-						see.FK_CoatSize_ID = Convert.ToInt32(ruid);
-						see.Code = sleeve_arrey[0].Split(';')[0];
-						see.Length = Convert.ToDecimal(sleeve_arrey[0].Split(';')[1]);
-						db.Insert(see);
-
 
 					}
 

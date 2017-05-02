@@ -1,14 +1,12 @@
 ﻿
-@{
-	ViewBag.Title = "Index";
-}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title></title>
-	@Styles.Render("~/Content/css/bootstrap.css");
-	@Styles.Render("~/Content/css/base.css");
+	@Styles.Render("~/Content/css/bootstrap.css")
+	@Styles.Render("~/Content/css/base.css")
 
 </head>
 <body style="min-height:800px; height: auto">
@@ -86,7 +84,7 @@
 						</li>
 
 						<li class="nav-left-dropdown">
-							<a href="javascript:;">处理</a>
+							<a href="javascript:;">处理数据</a>
 							<ul class="nav-left-dropdown-menu">
 								<li><a href="javascript:;" onclick="set_ifarme_Url('/Execl/import_jacket')">导入尺码表【西服】</a></li>
 								<li><a href="javascript:;" onclick="set_ifarme_Url('/Execl/import_trousers')">导入尺码表【西裤】</a></li>
@@ -95,7 +93,13 @@
 				 
 							</ul>
 						</li>
-
+						<li class="nav-left-dropdown">
+							<a href="javascript:;">系统管理</a>
+							<ul class="nav-left-dropdown-menu">
+								<li><a href="javascript:;" onclick="set_ifarme_Url('/User/List')">用户管理</a></li>
+	 
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>

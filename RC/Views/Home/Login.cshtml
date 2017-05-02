@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+ 
+ <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	 
+	<title>登陆</title>
+
+	<link rel="stylesheet" type="text/css" href="Css/Login_style.css">
+ 
+	@Styles.Render("~/Content/css/login.css")
+
+	<script type="text/javascript" src="Javascript/Login_javascript.js"></script>
+
+ 	@Scripts.Render("~/Scripts/jquery-1.12.3.js")
+
+	@Scripts.Render("~/Scripts/jquery-form.js")
+
+	@Scripts.Render("~/Scripts/A_Home/Login.js")
+
+</head>
+
+<body>
+
+	<h2 align="center">登陆</h2>
+
+	<div class="login_frame"></div>
+
+	<div class="LoginWindow">
+
+		<div>
+
+			<form method="post" action="Home/Login" enctype="multipart/form-data"  id="login_form"  class="login">
+
+				<p>
+
+					<label for="login">帐号:</label>
+
+					<input type="text" name="username" id="id" value="">
+
+				</p>
+ 
+				<p>
+
+					<label for="password">密码:</label>
+
+					<input type="password" name="password" id="password" value="">
+
+				</p>
+
+				<p class="login-submit">
+
+					<button type="button" class="login-button" id="loginButton" onclick="login()">Login</button>
+
+				</p>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+<script>
+	$("#login_form").bind("keydown", function (e) {
+		// 兼容FF和IE和Opera    
+		var theEvent = e || window.event;
+		var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+		if (code == 13) {
+			//回车执行查询
+			$("#loginButton").click();
+		}
+	});
+
+</script>

@@ -11,8 +11,13 @@ function analysis() {
         type: 'post',
         url: '/Execl/import_jacket',
         success: function (data) {
+        	console.log(JSON.stringify(data));
+        	if (data.state == "error") {
+        		alert(data.msg);
+        		return;
+        	}
             $(".headings th").remove();
-            var json = data.rows;
+            var json = data.msg;
             var th_html = '<th class="column-title">身高 </th><th class="column-title">前身长</th><th class="column-title">净胸围 </th><th class="column-title">成品胸围</th><th class="column-title">中腰</th><th class="column-title">成品下摆【不开叉】 </th><th class="column-title">成品下摆【开叉】 </th><th class="column-title">肩宽 </th><th class="column-title">袖长 </th>'
             $(".headings").append(th_html);
             show_dig();

@@ -1,17 +1,21 @@
 ﻿
- 
+@{
+    Layout = null;
+}
+
+
 
 @Scripts.Render("~/Scripts/jquery/dist/jquery.min.js")
 @Styles.Render("~/Scripts/bootstrap/dist/css/bootstrap.min.css")
 @Styles.Render("~/Scripts/font-awesome/css/font-awesome.min.css")
 @Styles.Render("~/Scripts/bootstrap-table/bootstrap-table.min.css")
 
- 
+
 
 <div class="panel panel-default ">
-	<div class="panel-heading">表单</div>
+	<div class="panel-heading">尺码表审核</div>
 	<div class="panel-body">
-		<form id="size_form" method="post" enctype="multipart/form-data" >
+		<form id="size_form" method="post" enctype="multipart/form-data">
 
 
 			<div class="form-group">
@@ -28,25 +32,26 @@
 				<label for="exampleInputPassword1">选择尺码表</label>
 				<select class="form-control" name="size_code" id="scselect">
 					<option>选择尺码表</option>
-		 
+
 				</select>
 			</div>
-		 
-			 
+
+
 			<button type="button" class="btn btn-default" onclick="reLoad()">查询</button>
 		</form>
 	</div>
 </div>
 <table id="tb_departments"></table>
- 
- 
+
+
 <script src="~/Scripts/jquery-1.12.3.js"></script>
- @Scripts.Render("~/Scripts/jquery-form.js")
- 
+@Scripts.Render("~/Scripts/jquery-form.js")
+
 @Scripts.Render("~/Scripts/bootstrap/dist/js/bootstrap.min.js")
 @Scripts.Render("~/Scripts/bootstrap-table/bootstrap-table.min.js")
 @Scripts.Render("~/Content/index.js")
- 
- 
+
+
 @Scripts.Render("~/Scripts/A_SizeManage/List.js")
- 
+
+

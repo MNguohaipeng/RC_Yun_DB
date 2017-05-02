@@ -48,8 +48,7 @@ namespace Common
             System.Text.RegularExpressions.Regex reg1 = new System.Text.RegularExpressions.Regex(@"[\u4e00-\u9fa5]");
             return reg1.IsMatch(str);
         }
-
-
+ 
         //验证是否是纯英文 并且长度只有1
         public static bool IsEnglish_Length_One(string str)
         {
@@ -64,6 +63,7 @@ namespace Common
             return reg1.IsMatch(str);
         }
 
+ 		 
 
         //拼接sql语句
         //添加   parameter 存字段名和值  field_name不用管
